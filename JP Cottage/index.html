@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>JP Cottage | Checkout Page</title>
+
+    <style>
+        .checkout-section { background-color: #eeeeee; padding: 30px; /* background-image: url(Pool-13.jpeg); */ background-position: center; background-size: cover; background-repeat: no-repeat; height: 100vh; }
+        .checkout-section .container { background: #fff; box-shadow: 3px 3px 5px #000; border-radius: 5px; padding: 15px; }
+        .col-md-8 { border-right: 1px dotted #333333; }
+        input[type=date] { padding: 5px 7.5px; border-radius: 5px; border: 1px solid #c2c2c2; }
+        label { font-size: 14px; display: table; margin-bottom: -10px; position: inherit; z-index: 1; background: #fff; left: 5px; padding: 2.5px 5px; }
+        input { width: 100%; padding: 5px 7.5px !important; border-radius: 5px; border: 1px solid #c2c2c2; margin-bottom: 15px; }
+        select { padding: 7.5px; border: 1px solid #c2c2c2; border-radius: 5px; width: 100%; }
+        .description, .personal-details { border-bottom: 1px dotted #333; padding: 15px 0px; }
+        
+        .receipt span { font-size: 14px; }
+        .room-description img { width: 100px; height: 100px; border-radius: 10px; }
+        .room-description { display: grid; grid-gap: 10px; grid-auto-flow: column; grid-template-columns: max-content; align-items: center; padding: 10px; border: 1px solid #c2c2c2; border-radius: 15px; border-bottom: 1px dashed #c2c2c2; box-shadow: 3px 3px 3px #c2c2c2; background: #ffffff; }
+        .check-details { /* display: grid; grid-gap: 10px; grid-auto-flow: column; grid-template-columns: max-content; align-items: center; */ padding: 10px; border: 1px solid #c2c2c2; border-radius: 15px; border-top: 1px dashed #c2c2c2; box-shadow: 3px 3px 3px #c2c2c2;background: #ffffff; }
+        .price, .gst, .discount { border-bottom: 1px dotted #eaeaea; display: flex; align-items: center; justify-content: space-between; padding: 5px 0px; }
+
+        .total-price { display: flex; align-items: center; justify-content: space-between; padding: 5px 10px; background: #f2f2f2; margin-left: -10px !important; margin-right: -10px; margin-bottom: -10px; border-radius: 0px 0px 15px 15px; }
+        button.submit { width: 100%; border-radius: 10px; }
+        .number { display: flex; align-items: center; justify-content: space-between; }
+		.minus, .plus { border-radius: 25px; padding: 0px 8px; font-size: 20px; border:1px solid #ddd; display: inline-block; vertical-align: middle; text-align: center; cursor: pointer; }
+        span.minus { padding: 0px 10px; }
+        .spacial-num { width: 40px; text-align: center; margin-bottom: 0px; border: none; }
+        p.room-desc { font-size: 12px; }
+        .checkin-checkout, .adults-child { display: flex; justify-content: space-evenly; border: 1px dashed #c2c2c2; border-radius: 7.5px; margin-bottom: 10px; }
+        .checkin-checkout span, .adults-child span { text-align: center; }
+
+        @media only screen and (max-width: 478px) {
+            .checkout-section { height: auto; padding: 30px 15px; }
+            .number { padding: 5px 0px 0px 0px; }
+            .receipt { padding-top: 15px; }
+        }
+
+    </style>
+  </head>
+  <body>
+
+    <section class="checkout-section">
+        <h1 class="text-center pb-3">JP Cottage Mahabaleshwar</h1>
+        <div class="container">
+            <form action="mail.php" method="post">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="description">
+                            <h5>Availiblity</h5>
+                            <div class="row availiblity">
+                                <div class="col-md-4">
+                                    <label for="checkin">Check-In:</label>
+                                    <input type="date" id="checkin" name="checkin" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="checkout">Check-Out:</label>
+                                    <input type="date" id="checkout" name="checkout" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="room-type">Room Type:</label>
+                                    <select name="room-type" id="room-type" required>
+                                        <option disable>Select Room</option>
+                                        <option value="standard-room">Standard Room</option>
+                                        <option value="delux-room">Delux Room</option>
+                                        <option value="premium-rrom">Premium Room</option>
+                                    </select>
+                                </div>
+                                <!--  -->
+                                <div class="col-md-4">
+                                    <div class="number">
+                                        <span for="rooms">Rooms:</span>
+                                        <div class="number">
+                                            <span class="minus">-</span>
+                                            <input class="spacial-num" type="text" value="1" required>
+                                            <span class="plus">+</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="number">
+                                        <span for="adults">Adults:</span>
+                                        <div class="number">
+                                            <span class="minus">-</span>
+                                            <input class="spacial-num" type="text" value="1" required>
+                                            <span class="plus">+</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="number">
+                                        <span for="childrens">Childrens:</span>
+                                        <div class="number">
+                                            <span class="minus">-</span>
+                                            <input class="spacial-num" type="text" value="0" required>
+                                            <span class="plus">+</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-details">
+                            <h5>Personal Details</h5>
+                            <div class="row personal">
+                                <div class="col-md-6">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <!--  -->
+                                <div class="col-md-6">
+                                    <label for="mobile">Mobile Number</label>
+                                    <input type="tel" id="mobile" name="mobile" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="whatsapp">WhatsApp Number</label>
+                                    <input type="tel" id="whatsapp" name="whatsapp" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="receipt">
+                            <h5 class="text-center">Your Reservation</h5>
+                            <div class="room-description">
+                                <img src="Pool-13.jpeg" width="100px" height="100px">
+                                <div class="rom-details">
+                                    <h5 class="room-ttl">Delux Room</h5>
+                                    <p class="room-desc">You can place Font Awesome icons just about anywhere, and we've tried to make it.</p>
+                                </div>
+                            </div>
+                            <div class="check-details">
+                                <div class="checkin-checkout">
+                                    <span>Check-In: <br><span>14/09/2023</span></span>
+                                    <span>Check-Out: <br><span>17/09/2023</span></span>
+                                </div>
+                                <div class="adults-child">
+                                    <span>Adults: <br><span> 2 </span></span>
+                                    <span>Childrens: <br><span> 0 </span></span>
+                                </div>
+                                <div class="price">
+                                    <span>Room Price: </span><span><span>2 X</span> ₹ 1000</span>
+                                </div>
+                                <div class="gst">
+                                    <span>18% GST: </span><span>₹ 180</span>
+                                </div>
+                                <div class="discount">
+                                    <span>Discount: </span><span>₹ 100</span>
+                                </div>
+                                <div class="total-price">
+                                    <span><b>Total Price:</b> </span><span><b>₹ 1080</b></span>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="button" class="btn btn-success submit">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        	$(document).ready(function() {
+			$('.minus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) - 1;
+				count = count < 1 ? 1 : count;
+				$input.val(count);
+				$input.change();
+				return false;
+			});
+			$('.plus').click(function () {
+				var $input = $(this).parent().find('input');
+				$input.val(parseInt($input.val()) + 1);
+				$input.change();
+				return false;
+			});
+		});
+    </script>
+  </body>
+</html>
